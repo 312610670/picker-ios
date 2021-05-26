@@ -9,7 +9,7 @@ function PickerColumns(props) {
     dep,
     column,
     options,
-    optionHeight = 33, // 单个高度
+    optionHeight, // 单个高度
     onChange,
     defaultValue,
     labelname, // 展示值
@@ -33,13 +33,15 @@ function PickerColumns(props) {
 
   const radiusDistance = (optionHeight * 20) / 2 / pai; // 半径长度
 
+  console.log(radiusDistance,'-radiusDistance')
   // 计算list数组索引
   const countListIndex = useCallback(
     (index) => {
       // 取值
       let value = options[index][valuename];
-      onChange(value, dep);
+      console.log(index,'--index',valuename, 'valuename')
       console.log(value, dep)
+      onChange(value, dep);
       setSelectIndex(index);
       setChildOptionis(options[index][childrenname] || []);
     },
@@ -109,6 +111,7 @@ function PickerColumns(props) {
       if (defaultValue[dep]) {
         initValue(defaultValue[dep])
       } else {
+        console.log(options[0][childrenname],'-options[0][childrenname]')
           setChildOptionis(options[0][childrenname]);
           onChange(options[0][valuename], dep);
           setAngle(0);
@@ -155,7 +158,7 @@ function PickerColumns(props) {
           </SSontainer>
         </SPickerColumns>
       </SContentArea>
-      {childOptionis?.length > 0 ? (
+      {childOptionis?.length > 0 && dep + 1 < column ? (
         <PickerColumns
           dep={dep + 1}
           column={column}
@@ -165,6 +168,7 @@ function PickerColumns(props) {
           labelname={labelname}
           valuename={valuename}// 取值KEY
           childrenname={childrenname}
+          optionHeight={optionHeight}
         />
       ) : null}
     </SOptions>

@@ -80,7 +80,6 @@ export const SMask = styled.div`
 // 递归组件
 
 export const SOptions = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;

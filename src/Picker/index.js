@@ -9,16 +9,15 @@ function Picker(props) {
     children,
     options,
     column,
+    defaultValue=[],
     optionHeight = 33, // 单个高度
-    defaultValue,
-    onChange,
-    onCancel,
-    onSure,
     labelname = 'label', // 展示值
     valuename = 'value', // 取值KEY
     childrenname = 'children',
+    onChange,
+    onCancel,
+    onSure,
   } = props;
-  const [dataList, setDataList] = useState([...options]); // 传入数据
   const [isVisible, setIsVisible] = useState(false);
   const [showValue, setShowValue] = useState([...defaultValue]);
   const result = useRef([]);
@@ -71,7 +70,8 @@ function Picker(props) {
           </div>
           <PickerColumns
             dep={0}
-            options={dataList}
+            options={options}
+            optionHeight={optionHeight}
             column={column}
             defaultValue={showValue}
             labelname={labelname} // 展示值
