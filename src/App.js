@@ -140,7 +140,6 @@ function App () {
       onChange={onChange}
       onCancel={onCancel}
       onSure={onSure}
-      
     >
       <div>选择器</div> 
     </Picker>
